@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
     this.myForm = new FormGroup({
       quantity: new FormControl(''),
       price: new FormControl(''),
-      total: new FormControl({value: '',disabled: true})
+      total: new FormControl()
     });
 
     combineLatest(
@@ -24,14 +24,14 @@ export class AppComponent implements OnInit{
     ).pipe(
       map(([q, p]) => q * p)
     ).subscribe(t => {
-      this.myForm.get('total').setValue(t)
+      this.myForm.get('total').patchValue(t)
     });
 
     // without combineLatest
 
     // this.myForm.get('quantity').valueChanges.subscribe(
     //   (value)=>{
-    //     this.myForm.get('total').setValue(
+    //     this.myForm.get('total').patchValue(
     //       value * this.myForm.get('price').value
     //     )
     //   }
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
 
     // this.myForm.get('price').valueChanges.subscribe(
     //   (value)=>{
-    //     this.myForm.get('total').setValue(
+    //     this.myForm.get('total').patchValue(
     //       value * this.myForm.get('quantity').value
     //     )
     //   }
