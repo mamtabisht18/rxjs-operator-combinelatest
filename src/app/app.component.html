@@ -1,0 +1,14 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input formControlName="quantity" placeholder="Quantity">
+  </div>
+  <div>
+    <input formControlName="price" placeholder="Price">
+  </div>
+  <div>
+    <input formControlName="total" placeholder="Total">
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
